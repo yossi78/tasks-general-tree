@@ -10,7 +10,9 @@ public class GeneralTreeUtil {
 
     // Simple method to print the tree structure
     public static void printTree(TreeNode<?> node, String appender) {
-        System.out.println(appender + node.getData());
+        if(node.getParent()!=null){
+            System.out.println(appender + node.getData());
+        }
         for (TreeNode<?> child : node.getChildren()) {
             printTree(child, appender + appender);
         }

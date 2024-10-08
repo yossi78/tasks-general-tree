@@ -48,19 +48,22 @@ public class TaskManager {
 
 
     public void printTree(){
-        doPrintTree(this.root);
+        doPrintTree(this.root,0);
     }
 
 
-    private void doPrintTree(TreeNode treeNode){
+    private void doPrintTree(TreeNode treeNode,Integer identation){
         System.out.println(treeNode.getData());
         List<TreeNode<Task>> children = treeNode.getChildren();
         for(TreeNode<Task> c:children){
+            for(int i=0;i<identation;i++){
+                System.out.print(" ");
+            }
             System.out.println(c.getData());
         }
         for(TreeNode<Task> c:children){
             if(!c.getChildren().isEmpty()){
-                doPrintTree(c);
+                doPrintTree(c,++identation);
             }
         }
     }
@@ -68,54 +71,16 @@ public class TaskManager {
 
     public static void main(String[] args) throws IllegalAccessException {
         TaskManager taskManager = new TaskManager();
-        // Create the root node
 
         taskManager.addTask("Child 1");
         taskManager.addTask("Child 2");
         taskManager.addTask("Child 3");
 
-//        Task rootTask = new Task("root",LocalDateTime.now());
-//        TreeNode<Task> root = new TreeNode<>(rootTask);
-//
-//
-//        // Create child tasks
-//        Task childTask1 = new Task("Child 1",LocalDateTime.now());
-//        Task childTask2 = new Task("Child 2",LocalDateTime.now());
-//        Task childTask3 = new Task("Child 3",LocalDateTime.now());
-//        // Create child nodes
-//        TreeNode<Task> child1 = new TreeNode<>(childTask1);
-//        TreeNode<Task> child2 = new TreeNode<>(childTask2);
-//        TreeNode<Task> child3 = new TreeNode<>(childTask3);
-//
-//
-//        // Add children to root
-//        taskManager.addTask("child1");
-//        taskManager.addTask("child2");
-//        taskManager.addTask("child3");
-//
-//
-//        // Create grandchildren tasks
-//        Task grandChildTask1 = new Task("GrandChild 1",LocalDateTime.now());
-//        Task grandChildTask2 = new Task("GrandChild 2",LocalDateTime.now());
-//        Task grandChildTask3 = new Task("GrandChild 3",LocalDateTime.now());
-
-
         taskManager.addSubTask("Child 1","GrandChild 1");
         taskManager.addSubTask("Child 1","GrandChild 2");
         taskManager.addSubTask("Child 1","GrandChild 3");
 
-//
-//        // Add grandchildren
-//        TreeNode<Task> grandChild1 = new TreeNode<>(grandChildTask1);
-//        TreeNode<Task> grandChild2 = new TreeNode<>(grandChildTask2);
-//        TreeNode<Task> grandChild3 = new TreeNode<>(grandChildTask3);
-//
-//
-//        child1.addChild(grandChild1);
-//        child1.addChild(grandChild2);
-//        child1.addChild(grandChild3);
-
-        // Display the tree
+       // taskManager.printTree();
         GeneralTreeUtil.printTree(taskManager.root, " ");
     }
 
