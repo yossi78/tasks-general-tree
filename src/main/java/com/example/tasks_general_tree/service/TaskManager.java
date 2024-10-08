@@ -53,19 +53,32 @@ public class TaskManager {
 
 
     private void doPrintTree(TreeNode treeNode,Integer identation){
-        System.out.println(treeNode.getData());
+        if(treeNode.getParent()!=null){
+            System.out.println(treeNode.getData());
+        }
         List<TreeNode<Task>> children = treeNode.getChildren();
         for(TreeNode<Task> c:children){
             for(int i=0;i<identation;i++){
                 System.out.print(" ");
             }
             System.out.println(c.getData());
-        }
-        for(TreeNode<Task> c:children){
-            if(!c.getChildren().isEmpty()){
-                doPrintTree(c,++identation);
+            if(c.getChildren()!=null){
+                identation++;
+            }
+            for(TreeNode<Task> subTask:c.getChildren()){
+                for(int i=0;i<identation;i++){
+                    System.out.print(" ");
+                }
+                System.out.println(subTask.getData());
+                if(!subTask.getChildren().isEmpty()){
+                    doPrintTree(subTask,++identation);
+                }
+            }
+            if(c.getChildren()!=null){
+                identation--;
             }
         }
+
     }
 
 
@@ -80,8 +93,8 @@ public class TaskManager {
         taskManager.addSubTask("Child 1","GrandChild 2");
         taskManager.addSubTask("Child 1","GrandChild 3");
 
-       // taskManager.printTree();
-        GeneralTreeUtil.printTree(taskManager.root, " ");
+        taskManager.printTree();
+       // GeneralTreeUtil.printTree(taskManager.root, " ");
     }
 
 
