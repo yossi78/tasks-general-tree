@@ -13,4 +13,8 @@ public class Task {
     private String name;
     private LocalDateTime creation;
 
+    @Override
+    public String toString() {
+        return  name + " - " + creation;
+    }
 }
