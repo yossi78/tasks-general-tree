@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "4f7c0295-1c40-4105-a243-6afa3ad0dd17",
+		"name": "General-Tree-tasks",
+		"description": "Postman collection for managing tasks and subtasks in the General-Tree-tasks application.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "513031"
+	},
+	"item": [
+		{
+			"name": "Create Task 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Child1"
+				},
+				"url": {
+					"raw": "{{base_url}}/tasks",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Creates a new task.\n\n**Body:**\n```json\n\"Task Name\"\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Child2"
+				},
+				"url": {
+					"raw": "{{base_url}}/tasks",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Creates a new task.\n\n**Body:**\n```json\n\"Task Name\"\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Child3"
+				},
+				"url": {
+					"raw": "{{base_url}}/tasks",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Creates a new task.\n\n**Body:**\n```json\n\"Task Name\"\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Task 4",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Child4"
+				},
+				"url": {
+					"raw": "{{base_url}}/tasks",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Creates a new task.\n\n**Body:**\n```json\n\"Task Name\"\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add GrandChild 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/tasks/add?parentName=Child1&name=GrandChild1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"add"
+					],
+					"query": [
+						{
+							"key": "parentName",
+							"value": "Child1",
+							"description": "Name of the parent task"
+						},
+						{
+							"key": "name",
+							"value": "GrandChild1",
+							"description": "Name of the subtask"
+						}
+					]
+				},
+				"description": "Adds a subtask to a parent task.\n\n**Query Parameters:**\n- `parentName`: Name of the parent task\n- `name`: Name of the subtask"
+			},
+			"response": []
+		},
+		{
+			"name": "Add GrandChild2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/tasks/add?parentName=Child1&name=GrandChild2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"add"
+					],
+					"query": [
+						{
+							"key": "parentName",
+							"value": "Child1",
+							"description": "Name of the parent task"
+						},
+						{
+							"key": "name",
+							"value": "GrandChild2",
+							"description": "Name of the subtask"
+						}
+					]
+				},
+				"description": "Adds a subtask to a parent task.\n\n**Query Parameters:**\n- `parentName`: Name of the parent task\n- `name`: Name of the subtask"
+			},
+			"response": []
+		},
+		{
+			"name": "Add GrantChild3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/tasks/add?parentName=Child1&name=GrandChild3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"add"
+					],
+					"query": [
+						{
+							"key": "parentName",
+							"value": "Child1",
+							"description": "Name of the parent task"
+						},
+						{
+							"key": "name",
+							"value": "GrandChild3",
+							"description": "Name of the subtask"
+						}
+					]
+				},
+				"description": "Adds a subtask to a parent task.\n\n**Query Parameters:**\n- `parentName`: Name of the parent task\n- `name`: Name of the subtask"
+			},
+			"response": []
+		},
+		{
+			"name": "Add GrantGrantChild1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/tasks/add?parentName=GrandChild1&name=GrandGrandChild1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"add"
+					],
+					"query": [
+						{
+							"key": "parentName",
+							"value": "GrandChild1",
+							"description": "Name of the parent task"
+						},
+						{
+							"key": "name",
+							"value": "GrandGrandChild1",
+							"description": "Name of the subtask"
+						}
+					]
+				},
+				"description": "Adds a subtask to a parent task.\n\n**Query Parameters:**\n- `parentName`: Name of the parent task\n- `name`: Name of the subtask"
+			},
+			"response": []
+		},
+		{
+			"name": "Add GrantGrantChild2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/tasks/add?parentName=GrandChild1&name=GrandGrandChild2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"add"
+					],
+					"query": [
+						{
+							"key": "parentName",
+							"value": "GrandChild1",
+							"description": "Name of the parent task"
+						},
+						{
+							"key": "name",
+							"value": "GrandGrandChild2",
+							"description": "Name of the subtask"
+						}
+					]
+				},
+				"description": "Adds a subtask to a parent task.\n\n**Query Parameters:**\n- `parentName`: Name of the parent task\n- `name`: Name of the subtask"
+			},
+			"response": []
+		},
+		{
+			"name": "Add GrantGrantChild3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/tasks/add?parentName=GrandChild1&name=GrandGrandChild3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"add"
+					],
+					"query": [
+						{
+							"key": "parentName",
+							"value": "GrandChild1",
+							"description": "Name of the parent task"
+						},
+						{
+							"key": "name",
+							"value": "GrandGrandChild3",
+							"description": "Name of the subtask"
+						}
+					]
+				},
+				"description": "Adds a subtask to a parent task.\n\n**Query Parameters:**\n- `parentName`: Name of the parent task\n- `name`: Name of the subtask"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/tasks/GrandGrandChild2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"GrandGrandChild2"
+					]
+				},
+				"description": "Deletes a task by name.\n\n**Path Variable:**\n- `name`: Name of the task to delete"
+			},
+			"response": []
+		},
+		{
+			"name": "Print Task Tree",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/tasks/print",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tasks",
+						"print"
+					]
+				},
+				"description": "Prints the current task tree structure."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "parentName",
+			"value": "Parent Task"
+		},
+		{
+			"key": "subTaskName",
+			"value": "Sub Task"
+		},
+		{
+			"key": "taskName",
+			"value": "Sample Task Name"
+		}
+	]
+}

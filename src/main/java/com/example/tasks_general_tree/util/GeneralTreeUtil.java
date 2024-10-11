@@ -8,7 +8,6 @@ import java.util.Queue;
 
 public class GeneralTreeUtil {
 
-    // Simple method to print the tree structure
     public static void printTree(TreeNode<?> node, String appender) {
         if(node.getParent()!=null){
             System.out.println(appender + node.getData());
@@ -17,6 +16,23 @@ public class GeneralTreeUtil {
             printTree(child, appender + appender);
         }
     }
+
+
+    public static String printTreeToString(TreeNode<?> node, String appender,StringBuilder sb) {
+        if(node.getParent()!=null){
+            sb.append(appender + node.getData()).append("\n");
+        }
+        for (TreeNode<?> child : node.getChildren()) {
+            printTreeToString(child, appender + appender,sb);
+        }
+        if(node.getChildren().isEmpty()){
+            System.out.println("this node is the end = "+ node.getData());
+            return sb.toString();
+        }
+        return sb.toString();
+    }
+
+
 
     public static void depthFirstTraversal(TreeNode<?> node) {
         if (node == null) return;

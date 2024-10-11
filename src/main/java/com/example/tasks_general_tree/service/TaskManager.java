@@ -4,11 +4,14 @@ import com.example.tasks_general_tree.model.Task;
 import com.example.tasks_general_tree.model.TreeNode;
 import com.example.tasks_general_tree.util.GeneralTreeUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
+@Service
 public class TaskManager {
 
     private TreeNode<Task> root ;
@@ -19,7 +22,7 @@ public class TaskManager {
         this.taskMap=new HashMap<>();
     }
 
-    public void addTask(String name) throws IllegalAccessException {
+    public Task addTask(String name) throws IllegalAccessException {
         if(taskMap.containsKey(name)){
             log.warn("the task with name of :"+name + " is already exists");
             throw  new IllegalAccessException();
@@ -29,10 +32,11 @@ public class TaskManager {
         root.addChild(newTreeNode);
         taskMap.put(name,newTreeNode);
         log.debug("The name of :" + name + " has been added successfully");
+        return newTask;
     }
 
 
-    public void addSubTask(String parentName,String name) throws IllegalAccessException {
+    public Task addSubTask(String parentName,String name) throws IllegalAccessException {
         if(!taskMap.containsKey(parentName) || taskMap.containsKey(name) ){
             log.warn("Parent not exists or the task with name of :"+name + " is already exists");
             throw  new IllegalAccessException();
@@ -43,31 +47,31 @@ public class TaskManager {
         parent.addChild(newTreeNode);
         taskMap.put(name,newTreeNode);
         log.debug("The name of :" + name + " has been added successfully");
+        return newSubTask;
+    }
+
+
+    public void removeTask(String name) throws IllegalAccessException {
+        if(!taskMap.containsKey(name) ){
+            log.warn("name not exists :"+name);
+            throw  new IllegalAccessException();
+        }
+        TreeNode treeNodeToRemove = taskMap.get(name);
+        root.removeChild(treeNodeToRemove);
+        taskMap.remove(treeNodeToRemove);
     }
 
 
 
-
-
-    public static void main(String[] args) throws IllegalAccessException {
-        TaskManager taskManager = new TaskManager();
-
-        taskManager.addTask("Child 1");
-        taskManager.addTask("Child 2");
-        taskManager.addTask("Child 3");
-
-        taskManager.addSubTask("Child 1","GrandChild 1");
-        taskManager.addSubTask("Child 1","GrandChild 2");
-        taskManager.addSubTask("Child 1","GrandChild 3");
-
-
-        taskManager.addSubTask("GrandChild 1","GrantGrandChild 1");
-        taskManager.addSubTask("GrandChild 1","GrantGrandChild 2");
-        taskManager.addSubTask("GrandChild 1","GrantGrandChild 3");
-        taskManager.addSubTask("GrandChild 1","GrantGrandChild 4");
-
-        GeneralTreeUtil.printTree(taskManager.root, " ");
+    public  void printTree(){
+        GeneralTreeUtil.printTree(this.root, " ");
     }
+
+    public  String printTreeToString(){
+        return GeneralTreeUtil.printTreeToString(this.root, " ",new StringBuilder());
+    }
+
+
 
 
 }
