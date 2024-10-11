@@ -43,43 +43,12 @@ public class TaskManager {
         Task newSubTask = new Task(name,LocalDateTime.now());
         TreeNode newTreeNode = new TreeNode(newSubTask);
         parent.addChild(newTreeNode);
+        taskMap.put(name,newTreeNode);
         log.debug("The name of :" + name + " has been added successfully");
     }
 
 
-    public void printTree(){
-        doPrintTree(this.root,0);
-    }
 
-
-    private void doPrintTree(TreeNode treeNode,Integer identation){
-        if(treeNode.getParent()!=null){
-            System.out.println(treeNode.getData());
-        }
-        List<TreeNode<Task>> children = treeNode.getChildren();
-        for(TreeNode<Task> c:children){
-            for(int i=0;i<identation;i++){
-                System.out.print(" ");
-            }
-            System.out.println(c.getData());
-            if(c.getChildren()!=null){
-                identation++;
-            }
-            for(TreeNode<Task> subTask:c.getChildren()){
-                for(int i=0;i<identation;i++){
-                    System.out.print(" ");
-                }
-                System.out.println(subTask.getData());
-                if(!subTask.getChildren().isEmpty()){
-                    doPrintTree(subTask,++identation);
-                }
-            }
-            if(c.getChildren()!=null){
-                identation--;
-            }
-        }
-
-    }
 
 
     public static void main(String[] args) throws IllegalAccessException {
@@ -93,8 +62,13 @@ public class TaskManager {
         taskManager.addSubTask("Child 1","GrandChild 2");
         taskManager.addSubTask("Child 1","GrandChild 3");
 
-        taskManager.printTree();
-       // GeneralTreeUtil.printTree(taskManager.root, " ");
+
+        taskManager.addSubTask("GrandChild 1","GrantGrandChild 1");
+        taskManager.addSubTask("GrandChild 1","GrantGrandChild 2");
+        taskManager.addSubTask("GrandChild 1","GrantGrandChild 3");
+        taskManager.addSubTask("GrandChild 1","GrantGrandChild 4");
+
+        GeneralTreeUtil.printTree(taskManager.root, " ");
     }
 
 
